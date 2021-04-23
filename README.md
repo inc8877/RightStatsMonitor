@@ -4,6 +4,8 @@
 
 # RightStatsMonitor
 
+[![openupm](https://img.shields.io/npm/v/com.inc8877.right-stats-monitor?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.inc8877.right-stats-monitor/)
+
 Useful tool for displaying FPS with high precision. GC free
 
 ## Table of Contents
