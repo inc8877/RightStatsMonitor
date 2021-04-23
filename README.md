@@ -6,17 +6,31 @@
 
 [![openupm](https://img.shields.io/npm/v/com.inc8877.right-stats-monitor?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.inc8877.right-stats-monitor/)
 
-Useful tool for displaying FPS with high precision. GC free
+Useful tool for displaying FPS with high precision. Very lightweight and fast. GC-free
 
 ## Table of Contents
 
 - [RightStatsMonitor](#rightstatsmonitor)
   - [Table of Contents](#table-of-contents)
+  - [Demonstration](#demonstration)
+  - [How to use](#how-to-use)
   - [Installation](#installation)
     - [Install via OpenUPM](#install-via-openupm)
     - [Install via Git URL](#install-via-git-url)
   - [Small useful features](#small-useful-features)
+  - [Notes](#notes)
   - [Credits](#credits)
+
+## Demonstration
+
+<p align="center">
+  <img src="https://imgur.com/epAGaOK.gif">
+</p>
+
+## How to use
+
+1. [Install](#installation) RSM
+2. Add RSM to scene by following this path `Tools > RightStatsMonitor > Add to scene`
 
 ## Installation
 
@@ -48,6 +62,10 @@ using RightStatsMonitor.Core;
 // Get current FPS
 RSMCore.CurrentFPS
 ```
+
+## Notes
+
+RSM may allocate some memory at runtime in Editor. At runtime on platforms (iOS, Android) does not allocate memory. This has to do with how TMP works in the editor. [[Explanation](https://forum.unity.com/threads/runtime-allocation-and-huge-cpu-usage.564175/)]
 
 ## Credits
 

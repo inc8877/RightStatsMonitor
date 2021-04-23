@@ -39,6 +39,10 @@ namespace RightStatsMonitor.Core
                 monoRamText.SetText("Mono: {0:1}", Profiler.GetMonoUsedSizeLong() / 1048576f);
             }
             else _timeCount += Time.deltaTime;
+            
+            if (CurrentFPS >= 50) fpsText.color = Color.green;
+            else if (CurrentFPS > 30 && CurrentFPS < 50) fpsText.color = Color.yellow;
+            else fpsText.color = Color.red;
 
             _passedFrames++;
 
