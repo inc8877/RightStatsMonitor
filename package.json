@@ -1,0 +1,27 @@
+{
+  "name": "com.inc8877.right-stats-monitor",
+  "version": "1.0.0",
+  "displayName": "RightStatsMonitor",
+  "description": "Useful tool for displaying FPS with high precision. GC free",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.0"
+  },
+  "keywords": [
+    "fps",
+    "stats",
+    "monitor",
+    "system",
+    "cpu",
+    "gpu"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inc8877/RightStatsMonitor.git"
+  },
+  "author": {
+    "name": "Volodymyr Bozhko",
+    "email": "inc8877@gmail.com",
+    "url": "https://github.com/inc8877"
+  },
+  "license": "MIT"
+}
