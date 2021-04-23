@@ -1,6 +1,6 @@
 {
   "name": "com.inc8877.right-stats-monitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "RightStatsMonitor",
   "description": "Useful tool for displaying FPS with high precision. GC free",
   "dependencies": {
