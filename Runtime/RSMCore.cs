@@ -5,33 +5,51 @@ using UnityEngine.Profiling;
 
 namespace RightStatsMonitor.Core
 {
-    public class RSMCore : MonoBehaviour
+    public sealed class RSMCore : MonoBehaviour
     {
-        public int targetFPS = 120;
-        [Tooltip("in milliseconds")] public long fpsUpdateTime = 500;
-        [Tooltip("in seconds")] public float RAMUpdateTime = 1f;
-        public TMP_Text fpsText, allocatedRamText, reservedRamText, monoRamText;
-        
         public static float CurrentFPS { get; private set; }
-
+        
+        public TMP_Text fpsText;
+        public TMP_Text allocatedRamText;
+        public TMP_Text reservedRamText;
+        public TMP_Text monoRamText;
+        
+        [SerializeField] private Canvas canvas;
+        
+        private RsmSettings _rsmSettings;
         private Stopwatch _stopwatch;
-    
+
+        private int _targetFPS;
+        private long _fpsUpdateTime;
+        private float _ramUpdateTime;
+
         private int _passedFrames;
         private long _passedMilliseconds;
-        private float _passedSeconds, _currentFrameTime, _timeCount = 1f;
-    
+        private float _passedSeconds;
+        private float _currentFrameTime;
+        private float _timeCount = 1f;
 
         private void Start()
         {
+            _rsmSettings = RsmSettings.Instance;
+            
+            if (_rsmSettings.DontDestroy) DontDestroyOnLoad(this);
+
+            canvas.sortingOrder = _rsmSettings.CanvasSortOrder;
+
+            _targetFPS = _rsmSettings.TargetFrameRate;
+            _fpsUpdateTime = _rsmSettings.FpsUpdateTime;
+            _ramUpdateTime = _rsmSettings.RamUpdateTime;
+            
             QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = targetFPS;
+            Application.targetFrameRate = _targetFPS;
         
             _stopwatch = Stopwatch.StartNew();
         }
 
         private void Update()
         {
-            if (_timeCount >= RAMUpdateTime)
+            if (_timeCount >= _ramUpdateTime)
             {
                 _timeCount = 0f;
                 allocatedRamText.SetText("Allocated: {0:1}", Profiler.GetTotalAllocatedMemoryLong()/ 1048576f);
@@ -48,12 +66,12 @@ namespace RightStatsMonitor.Core
 
             _passedMilliseconds = _stopwatch.ElapsedMilliseconds;
         
-            if (_passedMilliseconds < fpsUpdateTime) return;
+            if (_passedMilliseconds < _fpsUpdateTime) return;
 
             _passedSeconds = _passedMilliseconds / 1000f;
 
             CurrentFPS = _passedFrames / _passedSeconds;
-            _currentFrameTime = _passedMilliseconds / (float)_passedFrames;
+            _currentFrameTime = _passedMilliseconds / (_passedFrames * 1f); // `*1f` instead of explicit conversion
 
             fpsText.SetText("FPS: {0:1} (ms {1:1})", CurrentFPS, _currentFrameTime);
 

@@ -1,16 +1,25 @@
+#if UNITY_EDITOR
+using RightStatsMonitor.Core;
 using UnityEditor;
 using UnityEngine;
 
 namespace RightStatsMonitor.Editor
 {
-    public class InstantiateStatsMonitor : MonoBehaviour
+    internal sealed class InstantiateStatsMonitor : MonoBehaviour
     {
+        [MenuItem("Tools/RightStatsMonitor/Settings")]
+        private static void OpenRsmSettings()
+        {
+            Selection.activeObject = RsmSettings.Instance;
+        }
+        
         [MenuItem("Tools/RightStatsMonitor/Add to scene")]
         private static void InstStatsMonitorInTheScene()
         {
-            if (GameObject.Find("RSM")) EditorUtility.DisplayDialog("RightStatsMonitor is already in the scene",
+            if (FindObjectOfType<RSMCore>()) EditorUtility.DisplayDialog("RightStatsMonitor is already in the scene",
                 "", "OK");
             else Instantiate(Resources.Load("RightStatsMonitor")).name = "RSM";
         }
     }
 }
+#endif

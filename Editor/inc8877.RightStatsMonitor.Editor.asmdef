@@ -2,7 +2,8 @@
     "name": "inc8877.RightStatsMonitor.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:343deaaf83e0cee4ca978e7df0b80d21"
+        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+        "GUID:cf1500d7110284458ad5af39c28251a4"
     ],
     "includePlatforms": [
         "Editor"

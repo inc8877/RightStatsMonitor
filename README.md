@@ -29,8 +29,11 @@ Useful tool for displaying FPS with high precision. Very lightweight and fast. G
 
 ## How to use
 
-1. [Install](#installation) RSM
-2. Add RSM to scene by following this path `Tools > RightStatsMonitor > Add to scene`
+1. [Install](#installation) `RSM`
+2. Use available actions to interact with the `RSM` via `Tools > RightStatsMonitor`
+
+The `RSM` has global settings like target frame rate, canvas sort order, initialize at startup, and more.
+You can customize the way you want, to do this, just open the settings under this path `Tools> RightStatsMonitor> Preferences`.
 
 ## Installation
 
